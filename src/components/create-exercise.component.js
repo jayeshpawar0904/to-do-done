@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import DatePicker from 'react-datepicker'
 import axios from'axios'
+import Modal from 'react-bootstrap/Modal'
 
 export class CreateExercises extends Component {
     constructor(props) {
@@ -73,10 +74,12 @@ export class CreateExercises extends Component {
 
         window.location='/';
     }
+    
     render() {
         return (
+          
             <div>
-      <h3>Create ur Notes</h3>
+      <h3>Create Ur Notes</h3>
       <form onSubmit={this.onSubmit}>
       <div className="form-group">
           <label>Title: </label>
@@ -97,17 +100,18 @@ export class CreateExercises extends Component {
               />
         </div>
         <div className="form-group"> 
-          <label>label: </label>
+          <label>Label: </label>
           <select ref="userInput"
               required
               className="form-control"
               value={this.state.username}
               onChange={this.onChangeUsername}>
-              {
+                  
+                 {
                 this.state.users.map(function(user) {
                   return <option 
-                    key={user}
-                    value={user}>{user}
+                  key={user}
+                   value={user}>{user}
                     </option>;
                 })
               }
@@ -125,7 +129,7 @@ export class CreateExercises extends Component {
         </div>
 
         <div className="form-group">
-          <input type="submit" value="Create Exercise Log" className="btn btn-primary" />
+          <input type="submit" value="Save Notes" form="modal-details" className="btn btn-primary" />
         </div>
       </form>
     </div>

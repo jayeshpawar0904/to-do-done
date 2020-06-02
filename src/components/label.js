@@ -17,17 +17,20 @@ const Exercise = props => (
   </tr>
 )
 
-export default class ExercisesList extends Component {
+export default class Label extends Component {
   constructor(props) {
     super(props);
 
     this.deleteExercise = this.deleteExercise.bind(this)
 
-    this.state = {exercises: []};
+    this.state = {
+        username:props.username
+        ,exercises: []};
+
   }
 
   componentDidMount() {
-    axios.get('http://localhost:5000/exercises/')
+    axios.get('http://localhost:5000/labels/'+this.props.match.params.username)
       .then(response => {
         this.setState({ exercises: response.data })
       })
@@ -47,7 +50,9 @@ export default class ExercisesList extends Component {
 
   exerciseList() {
     return this.state.exercises.map(currentexercise => {
-  
+      console.log(this.props.username)
+     
+        console.log(this.state.username)
         return <CardsUi exercise={currentexercise} deleteExercise={this.deleteExercise} key={currentexercise._id}/>;
     })
   }

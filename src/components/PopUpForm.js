@@ -1,69 +1,38 @@
-import React, { Component, useState } from 'react'
-import {Modal,Button,Row,Col,Forn ,MyVerticallyCenteredModal} from 'react-bootstrap'
-
-
-function App() {
-    const [modalShow, setModalShow] = React.useState(false);
-  
-    return (
-      <div>
-        <Button variant="primary" onClick={() => setModalShow(true)}>
-          Launch vertically centered modal
-        </Button>
-  
-        <MyVerticallyCenteredModal
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-        />
-      </div>
-    );
-  }
-
-export class PopUpForm extends Component {
-    constructor(props) {
-        super(props)
+import React, {  useState } from 'react'
+import {Button,Row,Col,Forn ,MyVerticallyCenteredModal} from 'react-bootstrap'
+import Modal from 'react-bootstrap/Modal'
+import ModalDialog from 'react-bootstrap/ModalDialog'
+import ModalHeader from 'react-bootstrap/ModalHeader'
+import ModalTitle from 'react-bootstrap/ModalTitle'
+import ModalBody from 'react-bootstrap/ModalBody'
+import ModalFooter from 'react-bootstrap/ModalFooter'
+import CreateExercise from "./create-exercise.component";
+function Appl(props) {
     
-        this.state = {
-             
-        }
-    }
-    
-    render() {
-        
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  return (
-    <div>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
-      <Modal show={show} onHide={handleClose} animation={false}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
-      <App/>
-    </div>
-  );
-    }
-
-    
+  return(
+    <Modal
+     className="form-group"
+      {...props}
+      size="lg"
+      aria-labelledby="contained-modal-title-vcenter"
+      centered
+    >
+      <Modal.Header closeButton>
+        <Modal.Title id="contained-modal-title-vcenter">
+          Ur Notes
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+      <CreateExercise />
+      </Modal.Body>
       
-    
+      <Modal.Footer>
+      
+     
+        <button onClick={props.onHide}>Close</button>
+      </Modal.Footer>
+    </Modal>
+  )
 }
 
-export default PopUpForm
+export default Appl;

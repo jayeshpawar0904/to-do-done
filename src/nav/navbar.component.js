@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './navbar.css'
+import Sidebar from './Sidebar'
 import { FaPlusCircle} from "react-icons/fa";
-export default class Navbar extends Component {
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAlignLeft } from "@fortawesome/free-solid-svg-icons";
+import { Navbar, Button, Nav } from "react-bootstrap";
+export default class Navbarr extends Component {
 
   render() {
    
@@ -12,7 +16,8 @@ return(
   
 <div className="container center">
   <nav className="menu">
-      <h1 class="menu__logo">Epic Co.</h1>
+ 
+      <h1 class="menu__logo">To-Do-Done</h1>
 
       <div className="menu__right">
           <ul className="menu__list">
